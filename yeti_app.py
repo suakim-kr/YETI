@@ -52,13 +52,13 @@ def load_exchange_data():
     """7월 실제 환율 데이터와 8월 예측 데이터를 로드하여 통합"""
     try:
         # 7월 실제 환율 데이터 로드
-        july_data = pd.read_csv('C:/Users/user1/Downloads/july_yen.csv')
+        july_data = pd.read_csv('./july_yen.csv')
         july_data['ds'] = pd.to_datetime(july_data['ds'])
         july_data = july_data.rename(columns={'ds': 'date', 'y': 'rate'})
         july_data['is_prediction'] = False
         
         # 2025년 예측 데이터 로드
-        forecast_data = pd.read_csv('C:/Users/user1/Downloads/TEMPO/forecast_2025.csv')
+        forecast_data = pd.read_csv('./forecast_2025.csv')
         forecast_data['date'] = pd.to_datetime(forecast_data['date'])
         forecast_data = forecast_data.rename(columns={'predicted_fx': 'rate'})
         forecast_data['is_prediction'] = True
@@ -535,7 +535,7 @@ with tab2:
     st.subheader("📰 월별 리포트")
     st.write("엔화 시장 흐름을 파악할 수 있는 최근 3개월의 AI 뉴스 요약을 확인해보세요.")
 
-    news_df = pd.read_csv('C:/Users/user1/Downloads/monthly_news_202007202507.csv')
+    news_df = pd.read_csv('./monthly_news_202007202507.csv')
 
     # 날짜를 datetime으로 변환
     news_df['date'] = pd.to_datetime(news_df['date'])
